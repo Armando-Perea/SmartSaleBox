@@ -10,6 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SmartSaleBoxApp {
 	
+	public static final String SYSTEM_URL = "http://localhost:3001/smartsalebox/system";
+	
 	public static void main( String[] args ){
         SpringApplication.run(SmartSaleBoxApp.class, args);
     }

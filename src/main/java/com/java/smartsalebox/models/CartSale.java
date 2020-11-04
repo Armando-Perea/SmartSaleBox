@@ -28,11 +28,14 @@ public class CartSale {
 	@Column(name="noSale")
 	Integer noSale;
 	
+	@Column(name="idProduct")
+	Integer  idProduct;
+	
 	@Column(name="description")
 	String description;
 	
-	@Column(name="quantity")
-	Integer  quantity;
+	@Column(name="units")
+	Integer  units;
 	
 	@Column(name="total")
 	Double total;

@@ -2,6 +2,8 @@ package com.java.smartsalebox.controller;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,6 +49,14 @@ public class CashController {
 	public void deleteCash(@PathVariable Integer id){
 		log.info("deleteCash Controller");
 		cashRepoImpl.deleteCash(id);
+	}
+	
+	@Transactional
+	@GetMapping("/truncateCash")
+	public String truncateCash(){
+		log.info("truncateCash Controller");
+		cashRepoImpl.truncateCash();
+		return "Truncated";
 	}
 
 }

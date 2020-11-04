@@ -11,11 +11,12 @@ public class CartSaleClientTest {
 
 	public void createDummyCartSale() {
 		CartSale cartSale = new CartSale();
-		cartSale.setIdCartSale(2);
-		cartSale.setNoSale(1);
-		cartSale.setDescription("Test Desc 2");
-		cartSale.setQuantity(3);
-		cartSale.setTotal(489.90);
+		cartSale.setIdCartSale(5);
+		cartSale.setNoSale(2);
+		cartSale.setIdProduct(8);
+		cartSale.setDescription("Product 8");
+		cartSale.setUnits(6);
+		cartSale.setTotal(600.00);
 		cartSale = CartSaleClient.addCartSale(cartSale);
 		System.out.println("CARTSALE CREATED: "+cartSale.toString());
 	}
@@ -24,8 +25,9 @@ public class CartSaleClientTest {
 		CartSale cartSale = new CartSale();
 		cartSale.setIdCartSale(2);
 		cartSale.setNoSale(2);
+		cartSale.setIdProduct(1);
 		cartSale.setDescription("Test Desc Updated");
-		cartSale.setQuantity(4);
+		cartSale.setUnits(4);
 		cartSale.setTotal(896.90);
 		int response = CartSaleClient.updateCartSale(cartSale);
 		System.out.println("UPDATE RESPONSE: "+response);
@@ -50,6 +52,7 @@ public class CartSaleClientTest {
 		Integer admin = CartSaleClient.deleteCartSale(id);
 		System.out.println("CARTSALE REMOVED: "+admin);
 	}
+	
 
 	public static void main(String[] args) {
 		CartSaleClientTest cartSaleClientTest = new CartSaleClientTest();
@@ -58,7 +61,9 @@ public class CartSaleClientTest {
 		//cartSaleClientTest.getCartSaleById(1);
 		//cartSaleClientTest.getCartSaleByNoSale(2);
 		//cartSaleClientTest.getAllCartSale();
-		cartSaleClientTest.deleteAdmin(2);
+		//cartSaleClientTest.deleteAdmin(2);
+		String resp = CartSaleClient.truncateCartSale();
+		System.out.println("RESP: "+resp);
 		// EVERYTHING WORKING OK !!!
 	}
 	

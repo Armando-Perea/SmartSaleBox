@@ -33,8 +33,8 @@ public class Sales {
 	@Column(name="description")
 	String description;
 	
-	@Column(name="quantity")
-	Integer quantity;
+	@Column(name="units")
+	Integer units;
 	
 	@Column(name="paymentType")
 	String paymentType;

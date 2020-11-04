@@ -2,6 +2,7 @@ package com.java.smartsalebox.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -15,5 +16,9 @@ public interface SalesRepository extends CrudRepository<Sales,Integer> {
 	
 	@Query("select sales from Sales sales where sales.noSale= :noSale")
 	public List<Sales> findByNoSale(@Param("noSale") Integer noSale);
+	
+	@Modifying
+	@Query(value = "truncate smartsalebox.sales", nativeQuery = true)
+	public void truncateSales();
 	
 }

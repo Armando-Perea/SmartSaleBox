@@ -137,5 +137,24 @@ public class SalesClient {
 		logger.info("Before Returning deleteSale");
 		return status;
 	}
+	
+	public static String truncateSales() {
+		HttpHeaders headers = new HttpHeaders();
+		String resp = "Not Processed";
+		try {
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			RestTemplate restTemplate = new RestTemplate();
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/sales/truncateSales";
+			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
+			ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					String.class);
+			resp = responseEntity.getBody();
+			logger.info("Before Returning truncateSales");
+			return resp;
+		} catch (Exception ex) {
+			logger.error("ERROR TRUNCATE SALES " + ex);
+		}
+		return resp;
+	}
 
 }

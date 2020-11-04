@@ -29,4 +29,7 @@ public class CashRepoImpl {
 		cashRepository.deleteById(id);
 	}
 
+	public void truncateCash() {
+		cashRepository.truncateCash();
+	}
 }

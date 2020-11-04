@@ -118,5 +118,24 @@ public class ClosureClient {
 		logger.info("Before Returning deleteClosure");
 		return status;
 	}
+	
+	public static String truncateClosure() {
+		HttpHeaders headers = new HttpHeaders();
+		String resp = "Not Processed";
+		try {
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			RestTemplate restTemplate = new RestTemplate();
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/closure/truncateClosure";
+			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
+			ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					String.class);
+			resp = responseEntity.getBody();
+			logger.info("Before Returning truncateClosure");
+			return resp;
+		} catch (Exception ex) {
+			logger.error("ERROR TRUNCATE CLOSURE " + ex);
+		}
+		return resp;
+	}
 
 }

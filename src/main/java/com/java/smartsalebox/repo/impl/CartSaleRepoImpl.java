@@ -37,5 +37,13 @@ public class CartSaleRepoImpl {
 	public void deleteCartSale(Integer id) {
 		cartSaleRepository.deleteById(id);
 	}
+	
+	public void truncateCartSale(List<CartSale> cartSaleList) {
+		cartSaleRepository.deleteAll(cartSaleList);
+	}
+	
+	public void truncateCartSale() {
+		cartSaleRepository.truncateCartSale();
+	}
 
 }

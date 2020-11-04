@@ -33,5 +33,9 @@ public class ClosureRepoImpl {
 	public void deleteClosure(Integer id) {
 		closureRepository.deleteById(id);
 	}
+	
+	public void truncateClosure() {
+		closureRepository.truncateClosure();
+	}
 
 }

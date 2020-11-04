@@ -40,4 +40,8 @@ public class SalesRepoImpl {
 		salesRepository.deleteById(id);
 	}
 	
+	public void truncateSales() {
+		salesRepository.truncateSales();
+	}
+	
 }

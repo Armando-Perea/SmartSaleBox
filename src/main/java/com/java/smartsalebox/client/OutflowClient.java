@@ -156,5 +156,24 @@ public class OutflowClient {
 		logger.info("Before Returning deleteOutflow");
 		return status;
 	}
+	
+	public static String truncateOutflow() {
+		HttpHeaders headers = new HttpHeaders();
+		String resp = "Not Processed";
+		try {
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			RestTemplate restTemplate = new RestTemplate();
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/outflow/truncateOutflow";
+			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
+			ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					String.class);
+			resp = responseEntity.getBody();
+			logger.info("Before Returning truncateOutflow");
+			return resp;
+		} catch (Exception ex) {
+			logger.error("ERROR TRUNCATE OUTFLOW " + ex);
+		}
+		return resp;
+	}
 
 }

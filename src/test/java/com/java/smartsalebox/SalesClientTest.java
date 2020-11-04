@@ -16,7 +16,7 @@ public class SalesClientTest {
 	    sales.setNoSale(1);
 	    sales.setDescription("TEST DESC");
 	    sales.setPaymentType("EFECTIVO TEST");
-	    sales.setQuantity(2);
+	    sales.setUnits(2);
 	    sales.setSaleDate(date);
 	    sales.setTotal(200.00);
 	    sales.setCardFare(15.00);
@@ -32,7 +32,7 @@ public class SalesClientTest {
 	    sales.setNoSale(1);
 	    sales.setDescription("TEST DESC UPDATED");
 	    sales.setPaymentType("EFECTIVO TEST UPDATED");
-	    sales.setQuantity(2);
+	    sales.setUnits(2);
 	    sales.setSaleDate(date);
 	    sales.setTotal(200.00);
 	    sales.setCardFare(00.00);

@@ -37,4 +37,8 @@ public class EmployeeRepoImpl {
 	public void deleteEmployee(Integer id) {
 		employeeRepository.deleteById(id);
 	}
+	
+	public void truncateEmployee() {
+		employeeRepository.truncateEmployee();
+	}
 }

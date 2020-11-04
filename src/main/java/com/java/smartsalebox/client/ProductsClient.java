@@ -137,4 +137,23 @@ public class ProductsClient {
 		logger.info("Before Returning deleteProduct");
 		return status;
 	}
+	
+	public static String truncateProducts() {
+		HttpHeaders headers = new HttpHeaders();
+		String resp = "Not Processed";
+		try {
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			RestTemplate restTemplate = new RestTemplate();
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/products/truncateProducts";
+			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
+			ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					String.class);
+			resp = responseEntity.getBody();
+			logger.info("Before Returning truncateProduct");
+			return resp;
+		} catch (Exception ex) {
+			logger.error("ERROR TRUNCATE PRODUCTS " + ex);
+		}
+		return resp;
+	}
 }

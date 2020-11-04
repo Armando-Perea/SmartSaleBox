@@ -3,6 +3,8 @@ package com.java.smartsalebox.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,6 +56,14 @@ public class ClosureController {
 	public void deleteClosure(@PathVariable Integer id){
 		log.info("deleteClosure Controller");
 		closureRepoImpl.deleteClosure(id);
+	}
+	
+	@Transactional
+	@GetMapping("/truncateClosure")
+	public String truncateClosure(){
+		log.info("truncateClosure Controller");
+		closureRepoImpl.truncateClosure();
+		return "Truncated";
 	}
 	
 }

@@ -99,5 +99,24 @@ public class CashClient {
 		logger.info("Before Returning deleteCash");
 		return status;
 	}
+	
+	public static String truncateCash() {
+		HttpHeaders headers = new HttpHeaders();
+		String resp = "Not Processed";
+		try {
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			RestTemplate restTemplate = new RestTemplate();
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/cash/truncateCash";
+			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
+			ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					String.class);
+			resp = responseEntity.getBody();
+			logger.info("Before Returning truncateCash");
+			return resp;
+		} catch (Exception ex) {
+			logger.error("ERROR TRUNCATE CASH " + ex);
+		}
+		return resp;
+	}
 
 }

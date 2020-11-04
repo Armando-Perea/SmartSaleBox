@@ -1,5 +1,7 @@
 package com.java.smartsalebox.repository;
 
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,4 +13,7 @@ public interface EmailConfigRepository extends CrudRepository<EmailConfig,Intege
 	@Override
 	<S extends EmailConfig> S save(S s);
 	
+	@Modifying
+	@Query(value = "truncate smartsalebox.email_config", nativeQuery = true)
+	public void truncateEmailConfig();
 }

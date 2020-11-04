@@ -117,5 +117,24 @@ public class EmailConfigClient {
 		logger.info("Before Returning deleteEmailConfig");
 		return status;
 	}
+	
+	public static String truncateEmailConfig() {
+		HttpHeaders headers = new HttpHeaders();
+		String resp = "Not Processed";
+		try {
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			RestTemplate restTemplate = new RestTemplate();
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/emailConfig/truncateEmailConfig";
+			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
+			ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					String.class);
+			resp = responseEntity.getBody();
+			logger.info("Before Returning truncateEmailConfig");
+			return resp;
+		} catch (Exception ex) {
+			logger.error("ERROR TRUNCATE EMAILCONFIG " + ex);
+		}
+		return resp;
+	}
 
 }

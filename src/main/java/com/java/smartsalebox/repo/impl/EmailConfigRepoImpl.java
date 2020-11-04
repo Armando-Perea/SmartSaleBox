@@ -34,4 +34,8 @@ public class EmailConfigRepoImpl {
 		emailConfigRepository.deleteById(id);
 	}
 	
+	public void truncateEmailConfig() {
+		emailConfigRepository.truncateEmailConfig();
+	}
+	
 }

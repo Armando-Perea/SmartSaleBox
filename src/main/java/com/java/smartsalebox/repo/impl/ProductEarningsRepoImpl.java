@@ -43,4 +43,8 @@ public class ProductEarningsRepoImpl {
 		productEarningsRepository.deleteById(id);
 	}
 	
+	public void truncateProductEarnings() {
+		productEarningsRepository.truncateProductEarnings();
+	}
+	
 }

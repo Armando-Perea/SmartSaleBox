@@ -11,10 +11,10 @@ public class ProductsClientTest {
 	    Products products = new Products();
 	    products.setIdProduct(3);
 	    products.setProduct("TEST PRODUCT 2");
-	    products.setCustomerPrice(250.00);
+	    products.setCostPrice(100.00);
 	    products.setEarning(560.00);
 	    products.setStock(50);
-	    products.setPrice(350.00);
+	    products.setSalePrice(560.00);
 	    products.setBarCode("123456789");
 	    products = ProductsClient.addProduct(products);
 		System.out.println("PRODUCT CREATED: "+products.toString());
@@ -24,17 +24,17 @@ public class ProductsClientTest {
 		 Products products = new Products();
 		 products.setIdProduct(2);
 		    products.setProduct("TEST PRODUCT UPDATED");
-		    products.setCustomerPrice(100.00);
+		    products.setCostPrice(100.00);
 		    products.setEarning(200.00);
 		    products.setStock(50);
-		    products.setPrice(325.36);
+		    products.setSalePrice(560.00);
 		    products.setBarCode("123");
 		int response = ProductsClient.updateProduct(products);
 		System.out.println("UPDATE RESPONSE: "+response);
 	}
 	
 	public void getProductByProductId(Integer id) {
-		List<Products> admin = Arrays.asList(ProductsClient.getProductById(id));
+		Products admin = ProductsClient.getProductById(id);
 		System.out.println("PRODUCT PAYMENT ID: "+admin.toString());
 	}
 	

@@ -3,6 +3,8 @@ package com.java.smartsalebox.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,6 +56,14 @@ public class EmailConfigController {
 	public void deleteEmailConfig(@PathVariable Integer id){
 		log.info("deleteEmailConfig Controller");
 		emailConfigRepoImpl.deleteEmailConfig(id);
+	}
+	
+	@Transactional
+	@GetMapping("/truncateEmailConfig")
+	public String truncateEmailConfig(){
+		log.info("truncateEmailConfig Controller");
+		emailConfigRepoImpl.truncateEmailConfig();
+		return "Truncated";
 	}
 	
 }

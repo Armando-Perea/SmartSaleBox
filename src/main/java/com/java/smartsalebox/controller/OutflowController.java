@@ -3,6 +3,8 @@ package com.java.smartsalebox.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -66,6 +68,14 @@ public class OutflowController {
 	public void deleteOutflow(@PathVariable Integer id){
 		log.info("deleteOutflow Controller");
 		outflowRepoImpl.deleteOutflow(id);
+	}
+	
+	@Transactional
+	@GetMapping("/truncateOutflow")
+	public String truncateOutflow(){
+		log.info("truncateOutflow Controller");
+		outflowRepoImpl.truncateOutflow();
+		return "Truncated";
 	}
 	
 	

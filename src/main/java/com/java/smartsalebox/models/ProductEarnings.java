@@ -33,14 +33,17 @@ public class ProductEarnings {
 	@Column(name="productName")
 	String productName;
 	
-	@Column(name="soldQuantity")
-	Integer soldQuantity;
+	@Column(name="units")
+	Integer units;
 	
 	@Column(name="unitEarning")
 	Double unitEarning;
 	
 	@Column(name="totalEarning")
 	Double totalEarning;
+	
+	@Column(name="productStock")
+	Integer productStock;
 	
 	@Column(name="saleDate")
 	Date saleDate;

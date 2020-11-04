@@ -40,5 +40,9 @@ public class OutflowRepoImpl {
 	public void deleteOutflow(Integer id) {
 		outflowRepository.deleteById(id);
 	}
+	
+	public void truncateOutflow() {
+		outflowRepository.truncateOutflow();
+	}
 
 }

@@ -2,6 +2,7 @@ package com.java.smartsalebox.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -18,4 +19,7 @@ public interface ProductsRepository extends CrudRepository<Products,Integer> {
 	@Query("select prod from Products prod where prod.product like %:product%")
 	public List<Products> findByName(@Param("product") String name);
 	
+	@Modifying
+	@Query(value = "truncate smartsalebox.products", nativeQuery = true)
+	public void truncateProducts();
 }

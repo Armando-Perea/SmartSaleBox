@@ -39,5 +39,9 @@ public class ProductsRepoImpl {
 	public void deleteProduct(Integer id) {
 		productsRepository.deleteById(id);
 	}
+	
+	public void truncateProducts() {
+		productsRepository.truncateProducts();
+	}
 
 }

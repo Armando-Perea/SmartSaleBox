@@ -155,5 +155,24 @@ public class InflowClient {
 		logger.info("Before Returning deleteInflow");
 		return status;
 	}
+	
+	public static String truncateInflow() {
+		HttpHeaders headers = new HttpHeaders();
+		String resp = "Not Processed";
+		try {
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			RestTemplate restTemplate = new RestTemplate();
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/inflow/truncateInflow";
+			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
+			ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					String.class);
+			resp = responseEntity.getBody();
+			logger.info("Before Returning truncateInflow");
+			return resp;
+		} catch (Exception ex) {
+			logger.error("ERROR TRUNCATE INFLOW " + ex);
+		}
+		return resp;
+	}
 
 }

@@ -29,10 +29,10 @@ public class Products {
 	String product;
 	
 	@Column(name="costPrice")
-	Double customerPrice;
+	Double costPrice;
 	
 	@Column(name="salePrice")
-	Double price;
+	Double salePrice;
 	
 	@Column(name="earning")
 	Double earning;

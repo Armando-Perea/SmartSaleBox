@@ -41,5 +41,9 @@ public class InflowRepoImpl {
 	public void deleteInflow(Integer id) {
 		inflowRepository.deleteById(id);
 	}
+	
+	public void truncateInflow() {
+		inflowRepository.truncateInflow();
+	}
 
 }

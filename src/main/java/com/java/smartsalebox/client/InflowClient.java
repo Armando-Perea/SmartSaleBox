@@ -36,6 +36,25 @@ public class InflowClient {
 		}
 		return inflow;
 	}
+	
+	public static Double getTotalInflow() {
+		HttpHeaders headers = new HttpHeaders();
+		Double totalIn = 0.0;
+		try {
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			RestTemplate restTemplate = new RestTemplate();
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/inflow/getTotalInflow";
+			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
+			ResponseEntity<Double> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					Double.class);
+			totalIn = responseEntity.getBody();
+			logger.info("Before Returning getTotalInflow");
+			return totalIn;
+		} catch (Exception ex) {
+			logger.error("ERROR GET TOTAL INFLOW: " + ex);
+		}
+		return totalIn;
+	}
 
 	public static Inflow getInflowById(Integer id) {
 		HttpHeaders headers = new HttpHeaders();

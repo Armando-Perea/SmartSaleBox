@@ -34,6 +34,14 @@ public class InflowController {
 	 return inflowRepoImpl.getAllInflow();
 	}
 	
+	@GetMapping("/getTotalInflow")
+	public Double getTotalInflow(){
+		log.info("getTotalInflow Controller");
+		List<Inflow> inflowList = inflowRepoImpl.getAllInflow();
+		Double totalAmount = inflowList.stream().mapToDouble(total -> total.getQuantity()).sum();
+	 return totalAmount;
+	}
+	
 	@GetMapping("/getInflowById/{id}")
 	public Optional<Inflow> getInflowById(@PathVariable Integer id){
 		log.info("getInflowById Controller");

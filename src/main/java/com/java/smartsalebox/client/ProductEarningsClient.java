@@ -36,6 +36,25 @@ public class ProductEarningsClient {
 		}
 		return products;
 	}
+	
+	public static Double getTotalProductEarnings() {
+		HttpHeaders headers = new HttpHeaders();
+		Double products = 0.0;
+		try {
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			RestTemplate restTemplate = new RestTemplate();
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/productEarnings/getTotalProductEarnings";
+			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
+			ResponseEntity<Double> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					Double.class);
+			products = responseEntity.getBody();
+			logger.info("Before Returning getTotalProductEarnings");
+			return products;
+		} catch (Exception ex) {
+			logger.error("ERROR GET TOTAL PRODUCTS EARNINGS: " + ex);
+		}
+		return products;
+	}
 
 	public static ProductEarnings getProductEarningsById(Integer id) {
 		HttpHeaders headers = new HttpHeaders();

@@ -160,9 +160,10 @@ public class ProductEarningsClientTests {
 		//productsClientTest.getProductEarningsByProductId(2);
 		//productsClientTest.getProductByProductName("3");
 		//productsClientTest.deleteProductEarning(3);
-		productsClientTest.updateProductStock();
-		productsClientTest.fillProductEarning();
-		System.out.println("Continua Venta Normal ...............................................");
+		//productsClientTest.updateProductStock();
+		//productsClientTest.fillProductEarning();
+		Double total = ProductEarningsClient.getTotalProductEarnings();
+		System.out.println("Continua Venta Normal ..............................................."+total);
 		CartSaleClient.truncateCartSale();
 		// EVERYTHING WORKING OK !!!
 	}

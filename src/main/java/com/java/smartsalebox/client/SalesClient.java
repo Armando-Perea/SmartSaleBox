@@ -37,6 +37,25 @@ public class SalesClient {
 		}
 		return sales;
 	}
+	
+	public static Double getTotalSale() {
+		HttpHeaders headers = new HttpHeaders();
+		Double totalSale = 0.0;
+		try {
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			RestTemplate restTemplate = new RestTemplate();
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/sales/getTotalSale";
+			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
+			ResponseEntity<Double> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					Double.class);
+			totalSale = responseEntity.getBody();
+			logger.info("Before Returning getTotalSale");
+			return totalSale;
+		} catch (Exception ex) {
+			logger.error("ERROR GET TOTAL SALES: " + ex);
+		}
+		return totalSale;
+	}
 
 	public static Sales getSaleById(Integer id) {
 		HttpHeaders headers = new HttpHeaders();

@@ -46,6 +46,14 @@ public class ProductEarningsController {
 	 return productEarningsRepoImpl.getProductEarningsByProductId(idProduct);
 	}
 	
+	@GetMapping("/getTotalProductEarnings")
+	public Double getTotalProductEarnings(){
+		log.info("getTotalProductEarnings Controller");
+		List<ProductEarnings> productEarnings = productEarningsRepoImpl.getAllProductEarnings();
+		Double totalAmount = productEarnings.stream().mapToDouble(earning -> earning.getTotalEarning()).sum();
+	 return totalAmount;
+	}
+	
 	@GetMapping("/getProductEarningsByName/{name}")
 	public List<ProductEarnings> getProductEarningsByName(@PathVariable String name){
 		log.info("getProductEarningsByName Controller");

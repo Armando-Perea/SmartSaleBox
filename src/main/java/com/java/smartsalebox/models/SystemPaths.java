@@ -1,7 +1,5 @@
 package com.java.smartsalebox.models;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,38 +15,32 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name="sales", schema="smartsalebox")
+@Table(name="systempaths", schema="smartsalebox")
 @Entity
 @ToString
-public class Sales {
+public class SystemPaths {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="idSale")
-	Integer idSale;
+	@Column(name="idPath")
+	Integer idPath;
 	
-	@Column(name="noSale")
-	Integer noSale;
+	@Column(name="inflowsPdf")
+	String inflowsPdf;
 	
-	@Column(name="description")
-	String description;
+	@Column(name="outflowsPdf")
+	String outflowsPdf;
 	
-	@Column(name="price")
-	Double price;
+	@Column(name="salesPdf")
+	String salesPdf;
 	
-	@Column(name="units")
-	Integer units;
+	@Column(name="closurePdf")
+	String closurePdf;
 	
-	@Column(name="paymentType")
-	String paymentType;
+	@Column(name="productEarningsPdf")
+	String productEarningsPdf;
 	
-	@Column(name="cardFare")
-	Double cardFare;
-	
-	@Column(name="total")
-	Double total;
-	
-	@Column(name="saleDate")
-	Date saleDate;
+	@Column(name="productsPdf")
+	String productsPdf;
 	
 }

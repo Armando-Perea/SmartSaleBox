@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.java.smartsalebox.models.Sales;
 import com.java.smartsalebox.repo.impl.SalesRepoImpl;
 
@@ -32,6 +31,14 @@ public class SalesController {
 	public List<Sales> getAllPatients(){
 		log.info("getAllProducts Controller");
 	 return salesRepoImpl.getAllSales();
+	}
+	
+	@GetMapping("/getTotalSale")
+	public Double getTotalSale(){
+		log.info("getTotalSale Controller");
+		List<Sales> outflowList = salesRepoImpl.getAllSales();
+		Double totalAmount = outflowList.stream().mapToDouble(total -> total.getTotal()).sum();
+	 return totalAmount;
 	}
 	
 	@GetMapping("/getSaleById/{id}")

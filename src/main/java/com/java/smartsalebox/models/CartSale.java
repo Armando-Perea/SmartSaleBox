@@ -34,6 +34,9 @@ public class CartSale {
 	@Column(name="description")
 	String description;
 	
+	@Column(name="price")
+	Double price;
+	
 	@Column(name="units")
 	Integer  units;
 	

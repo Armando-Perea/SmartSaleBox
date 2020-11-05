@@ -37,6 +37,25 @@ public class OutflowClient {
 		}
 		return outflow;
 	}
+	
+	public static Double getTotalOutflow() {
+		HttpHeaders headers = new HttpHeaders();
+		Double totalOut = 0.0;
+		try {
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			RestTemplate restTemplate = new RestTemplate();
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/outflow/getTotalOutflow";
+			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
+			ResponseEntity<Double> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					Double.class);
+			totalOut = responseEntity.getBody();
+			logger.info("Before Returning getTotalOutflow");
+			return totalOut;
+		} catch (Exception ex) {
+			logger.error("ERROR GET TOTAL OUTFLOW: " + ex);
+		}
+		return totalOut;
+	}
 
 	public static Outflow getOutflowById(Integer id) {
 		HttpHeaders headers = new HttpHeaders();

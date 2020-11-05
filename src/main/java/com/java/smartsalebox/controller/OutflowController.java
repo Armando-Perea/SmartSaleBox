@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.java.smartsalebox.models.Inflow;
 import com.java.smartsalebox.models.Outflow;
 import com.java.smartsalebox.repo.impl.OutflowRepoImpl;
 
@@ -32,6 +33,14 @@ public class OutflowController {
 	public List<Outflow> getAllOutflow(){
 		log.info("getAllOutflow Controller");
 	 return outflowRepoImpl.getAllOutflow();
+	}
+	
+	@GetMapping("/getTotalOutflow")
+	public Double getTotalOutflow(){
+		log.info("getTotalOutflow Controller");
+		List<Outflow> outflowList = outflowRepoImpl.getAllOutflow();
+		Double totalAmount = outflowList.stream().mapToDouble(total -> total.getQuantity()).sum();
+	 return totalAmount;
 	}
 	
 	@GetMapping("/getOutflowById/{id}")

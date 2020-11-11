@@ -151,7 +151,7 @@ public class CartSaleClient {
 			logger.info("Before Returning truncateCartSale");
 			return resp;
 		} catch (Exception ex) {
-			logger.error("ERROR GET ALL CARTSALE: " + ex);
+			logger.error("ERROR TRUNCATE CARTSALE: " + ex);
 		}
 		return resp;
 	}

@@ -29,7 +29,7 @@ public class ProductsController {
 	ProductsRepoImpl productsRepoImpl;
 	
 	@GetMapping("/getAllProducts")
-	public List<Products> getAllPatients(){
+	public List<Products> getAllProducts(){
 		log.info("getAllProducts Controller");
 	 return productsRepoImpl.getAllProducts();
 	}

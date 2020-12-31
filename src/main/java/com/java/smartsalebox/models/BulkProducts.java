@@ -31,20 +31,17 @@ public class BulkProducts {
 	@Column(name="costPrice")
 	Double costPrice;
 	
-	@Column(name="salePrice")
-	Double salePrice;
-	
-	@Column(name="earning")
-	Double earning;
-	
 	@Column(name="kiloPrice")
 	Double kiloPrice;
+	
+	@Column(name="grStock")
+	Double grStock;
 	
 	@Column(name="kiloEarning")
 	Double kiloEarning;
 	
-	@Column(name="grStock")
-	Double grStock;
+	@Column(name="bulkEarning")
+	Double earning;
 	
 	@Column(name="barCode")
 	String barCode;

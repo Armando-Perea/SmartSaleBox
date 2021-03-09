@@ -28,6 +28,9 @@ public class Products {
 	@Column(name="product")
 	String product;
 	
+	@Column(name="type")
+	String type;
+	
 	@Column(name="costPrice")
 	Double costPrice;
 	

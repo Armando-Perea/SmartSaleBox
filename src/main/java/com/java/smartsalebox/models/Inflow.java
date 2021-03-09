@@ -43,6 +43,6 @@ public class Inflow {
 	String attendee;
 	
 	@Column(name="inflowDate")
-	Date inflowDate;
+	String inflowDate;
 	
 }

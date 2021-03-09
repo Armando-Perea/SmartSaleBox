@@ -47,6 +47,12 @@ public class SalesController {
 	 return salesRepoImpl.getSaleById(id);
 	}
 	
+	@GetMapping("/getSaleByProductId/{productId}")
+	public Optional<Sales> getSaleByProductId(@PathVariable Integer productId){
+		log.info("getSaleByProductId Controller");
+	 return salesRepoImpl.getSaleByProductId(productId);
+	}
+	
 	@GetMapping("/getSaleByNoSale/{noSale}")
 	public List<Sales> getSaleByNoSale(@PathVariable Integer noSale){
 		log.info("getSaleByNoSale Controller");

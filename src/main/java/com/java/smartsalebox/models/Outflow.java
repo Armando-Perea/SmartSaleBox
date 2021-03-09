@@ -43,6 +43,6 @@ public class Outflow {
 	String attendee;
 	
 	@Column(name="outflowDate")
-	Date outflowDate;
+	String outflowDate;
 	
 }

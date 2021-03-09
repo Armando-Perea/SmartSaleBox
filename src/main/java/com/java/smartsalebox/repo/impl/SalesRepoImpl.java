@@ -24,6 +24,10 @@ public class SalesRepoImpl {
 		return salesRepository.findById(id);
 	}
 	
+	public Optional<Sales> getSaleByProductId(Integer productId) {
+		return salesRepository.findByIdProduct(productId);
+	}
+	
 	public List<Sales> getSaleByNoSale(Integer noSale) {
 		return salesRepository.findByNoSale(noSale);
 	}

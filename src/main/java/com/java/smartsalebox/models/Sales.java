@@ -1,7 +1,5 @@
 package com.java.smartsalebox.models;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,16 +37,19 @@ public class Sales {
 	@Column(name="units")
 	Integer units;
 	
-	@Column(name="paymentType")
-	String paymentType;
-	
-	@Column(name="cardFare")
-	Double cardFare;
-	
 	@Column(name="total")
 	Double total;
 	
+	@Column(name="idProduct")
+	Integer idProduct;
+	
+	@Column(name="stock")
+	Integer stock;
+	
 	@Column(name="saleDate")
-	Date saleDate;
+	String saleDate;
+	
+	@Column(name="type")
+	String type;
 	
 }

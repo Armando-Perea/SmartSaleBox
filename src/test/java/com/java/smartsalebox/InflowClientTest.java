@@ -1,7 +1,10 @@
 package com.java.smartsalebox;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import com.java.smartsalebox.client.InflowClient;
 import com.java.smartsalebox.models.Inflow;
@@ -9,11 +12,12 @@ import com.java.smartsalebox.models.Inflow;
 public class InflowClientTest {
 
 	public void createDummyInflow() {
-		Inflow inflow = new Inflow(); 
-		long millis=System.currentTimeMillis();  
-	    java.sql.Date date=new java.sql.Date(millis);  
+		Inflow inflow = new Inflow();  
+		LocalDateTime myDateObj = LocalDateTime.now();
+		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", new Locale("es", "ES"));
+		String formattedDate = myDateObj.format(myFormatObj);
 		inflow.setIdInflow(2);
-		inflow.setInflowDate(date);
+		inflow.setInflowDate(formattedDate);
 		inflow.setPaymentType("EFECTIVO TEST");
 		inflow.setQuantity(380.00);
 		inflow.setAttendee("TEST PEREZ");
@@ -25,10 +29,11 @@ public class InflowClientTest {
 	
 	public void updateDummyInflow() {
 		Inflow inflow = new Inflow(); 
-		long millis=System.currentTimeMillis();  
-	    java.sql.Date date=new java.sql.Date(millis);  
+		LocalDateTime myDateObj = LocalDateTime.now();
+		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", new Locale("es", "ES"));
+		String formattedDate = myDateObj.format(myFormatObj);
 		inflow.setIdInflow(2);
-		inflow.setInflowDate(date);
+		inflow.setInflowDate(formattedDate);
 		inflow.setPaymentType("EFECTIVO TEST UPDATED");
 		inflow.setQuantity(380.00);
 		inflow.setAttendee("TEST PEREZ UPDATED");

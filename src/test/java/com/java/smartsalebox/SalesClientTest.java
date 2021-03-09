@@ -1,7 +1,10 @@
 package com.java.smartsalebox;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import com.java.smartsalebox.client.SalesClient;
 import com.java.smartsalebox.models.Sales;
@@ -9,33 +12,31 @@ import com.java.smartsalebox.models.Sales;
 public class SalesClientTest {
 
 	public void createDummySales() { 
-		long millis=System.currentTimeMillis();  
-	    java.sql.Date date=new java.sql.Date(millis);  
+		LocalDateTime myDateObj = LocalDateTime.now();
+		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", new Locale("es", "ES"));
+		String formattedDate = myDateObj.format(myFormatObj);
 	    Sales sales = new Sales();
 	    sales.setIdSale(2);
 	    sales.setNoSale(1);
 	    sales.setDescription("TEST DESC");
-	    sales.setPaymentType("EFECTIVO TEST");
 	    sales.setUnits(2);
-	    sales.setSaleDate(date);
+	    sales.setSaleDate(formattedDate);
 	    sales.setTotal(200.00);
-	    sales.setCardFare(15.00);
 	    sales = SalesClient.addSale(sales);
 		System.out.println("SALES CREATED: "+sales.toString());
 	}
 	
 	public void updateDummySales() {
-		long millis=System.currentTimeMillis();  
-	    java.sql.Date date=new java.sql.Date(millis);  
+		LocalDateTime myDateObj = LocalDateTime.now();
+		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", new Locale("es", "ES"));
+		String formattedDate = myDateObj.format(myFormatObj);
 	    Sales sales = new Sales();
 	    sales.setIdSale(2);
 	    sales.setNoSale(1);
 	    sales.setDescription("TEST DESC UPDATED");
-	    sales.setPaymentType("EFECTIVO TEST UPDATED");
 	    sales.setUnits(2);
-	    sales.setSaleDate(date);
+	    sales.setSaleDate(formattedDate);
 	    sales.setTotal(200.00);
-	    sales.setCardFare(00.00);
 		int response = SalesClient.updateSale(sales);
 		System.out.println("UPDATE RESPONSE: "+response);
 	}

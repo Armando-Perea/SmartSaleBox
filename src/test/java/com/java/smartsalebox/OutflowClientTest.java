@@ -1,7 +1,10 @@
 package com.java.smartsalebox;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import com.java.smartsalebox.client.OutflowClient;
 import com.java.smartsalebox.models.Outflow;
@@ -11,10 +14,11 @@ public class OutflowClientTest {
 
 	public void createDummyOutflow() {
 		Outflow outflow = new Outflow(); 
-		long millis=System.currentTimeMillis();  
-	    java.sql.Date date=new java.sql.Date(millis);  
+		LocalDateTime myDateObj = LocalDateTime.now();
+		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", new Locale("es", "ES"));
+		String formattedDate = myDateObj.format(myFormatObj);
 	    outflow.setIdOutflow(2);
-	    outflow.setOutflowDate(date);
+	    outflow.setOutflowDate(formattedDate);
 	    outflow.setPaymentType("EFECTIVO TEST2");
 	    outflow.setQuantity(380.00);
 	    outflow.setAttendee("TEST PEREZ2");
@@ -26,10 +30,11 @@ public class OutflowClientTest {
 	
 	public void updateDummyOutflow() {
 		Outflow outflow = new Outflow(); 
-		long millis=System.currentTimeMillis();  
-	    java.sql.Date date=new java.sql.Date(millis);  
+		LocalDateTime myDateObj = LocalDateTime.now();
+		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("EEEE, dd MMMM yyyy", new Locale("es", "ES"));
+		String formattedDate = myDateObj.format(myFormatObj);
 	    outflow.setIdOutflow(2);
-	    outflow.setOutflowDate(date);
+	    outflow.setOutflowDate(formattedDate);
 	    outflow.setPaymentType("EFECTIVO TEST UPDATE2");
 	    outflow.setQuantity(380.00);
 	    outflow.setAttendee("TEST PEREZ UPDATE");

@@ -1,6 +1,7 @@
 package com.java.smartsalebox.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -13,6 +14,9 @@ public interface SalesRepository extends CrudRepository<Sales,Integer> {
 
 	@Override
 	<S extends Sales> S save(S s);
+	
+	@Query("select sales from Sales sales where sales.idProduct= :idProduct and sales.type='GENERAL'")
+	public Optional<Sales> findByIdProduct(@Param("idProduct") Integer idProduct);
 	
 	@Query("select sales from Sales sales where sales.noSale= :noSale")
 	public List<Sales> findByNoSale(@Param("noSale") Integer noSale);

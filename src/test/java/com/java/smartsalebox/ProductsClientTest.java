@@ -58,9 +58,9 @@ public class ProductsClientTest {
 		//productsClientTest.createDummyProduct();
 		//productsClientTest.updateDummyProduct();
 		//productsClientTest.getProductByProductId(2);
-		//productsClientTest.getProductByProductName("TEST");
+		productsClientTest.getProductByProductName("Product");
 		//productsClientTest.deleteProduct(2);
-		productsClientTest.getAllProducts();
+		//productsClientTest.getAllProducts();
 		// EVERYTHING WORKING OK !!!
 	}
 	

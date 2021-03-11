@@ -25,11 +25,15 @@ public class SalesRepoImpl {
 	}
 	
 	public Optional<Sales> getSaleByProductId(Integer productId) {
-		return salesRepository.findByIdProduct(productId);
+		return salesRepository.findByIdProductGeneral(productId);
 	}
 	
 	public List<Sales> getSaleByNoSale(Integer noSale) {
 		return salesRepository.findByNoSale(noSale);
+	}
+	
+	public Sales getSaleByProductIdAndNoSale(Integer idProduct, Integer noSale) {
+		return salesRepository.findByProductIdGeneralAndNoSale(idProduct,noSale);
 	}
 	
 	public Sales saveSale(Sales sales) {

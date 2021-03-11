@@ -56,13 +56,32 @@ public class ProductEarningsClient {
 		return products;
 	}
 
-	public static ProductEarnings getProductEarningsById(Integer id) {
+	public static ProductEarnings getGeneralProductEarningsByProductId(Integer id) {
 		HttpHeaders headers = new HttpHeaders();
 		ProductEarnings product = new ProductEarnings();
 		try {
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			RestTemplate restTemplate = new RestTemplate();
-			String url = SmartSaleBoxApp.SYSTEM_URL + "/productEarnings/getProductEarningsById/{id}";
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/productEarnings/getGeneralProductEarningsByProductId/{id}";
+			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
+			ResponseEntity<ProductEarnings> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					ProductEarnings.class, id);
+			product = responseEntity.getBody();
+			logger.info("Before Returning getProductById");
+			return product;
+		} catch (Exception ex) {
+			logger.error("ERROR GET PRODUCT BY ID: " + ex);
+		}
+		return product;
+	}
+	
+	public static ProductEarnings getBulkProductEarningsByProductId(Integer id) {
+		HttpHeaders headers = new HttpHeaders();
+		ProductEarnings product = new ProductEarnings();
+		try {
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			RestTemplate restTemplate = new RestTemplate();
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/productEarnings/getBulkProductEarningsByProductId/{id}";
 			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
 			ResponseEntity<ProductEarnings> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
 					ProductEarnings.class, id);

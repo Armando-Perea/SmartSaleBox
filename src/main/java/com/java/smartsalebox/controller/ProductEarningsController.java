@@ -40,10 +40,16 @@ public class ProductEarningsController {
 	 return productEarningsRepoImpl.getProductEarningsById(id);
 	}
 	
-	@GetMapping("/getProductEarningsByProductId/{idProduct}")
-	public Optional<ProductEarnings> getProductEarningsByProductId(@PathVariable Integer idProduct){
+	@GetMapping("/getGeneralProductEarningsByProductId/{idProduct}")
+	public Optional<ProductEarnings> getGeneralProductEarningsByProductId(@PathVariable Integer idProduct){
 		log.info("getProductEarningsByProductId Controller");
-	 return productEarningsRepoImpl.getProductEarningsByProductId(idProduct);
+	 return productEarningsRepoImpl.getGeneralProductEarningsByProductId(idProduct);
+	}
+	
+	@GetMapping("/getBulkProductEarningsByProductId/{idProduct}")
+	public Optional<ProductEarnings> getBulkProductEarningsByProductId(@PathVariable Integer idProduct){
+		log.info("getProductEarningsByProductId Controller");
+	 return productEarningsRepoImpl.getBulkProductEarningsByProductId(idProduct);
 	}
 	
 	@GetMapping("/getTotalProductEarnings")

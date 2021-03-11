@@ -94,6 +94,25 @@ public class SalesClient {
 		}
 		return sales;
 	}
+	
+	public static Sales getSaleByProductIdAndNoSale(Integer idProduct, Integer noSale) {
+		HttpHeaders headers = new HttpHeaders();
+		Sales sales = null;
+		try {
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			RestTemplate restTemplate = new RestTemplate();
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/sales/getSaleByProductIdAndNoSale/{idProduct}/{noSale}";
+			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
+			ResponseEntity<Sales> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					Sales.class, idProduct,noSale);
+			sales = responseEntity.getBody();
+			logger.info("Before Returning getProductById");
+			return sales;
+		} catch (Exception ex) {
+			logger.error("ERROR GET SALE BY ID: " + ex);
+		}
+		return sales;
+	}
 
 	public static Sales[] getSaleByNoSale(Integer noSale) {
 		HttpHeaders headers = new HttpHeaders();

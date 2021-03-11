@@ -59,6 +59,12 @@ public class SalesController {
 	 return salesRepoImpl.getSaleByNoSale(noSale);
 	}
 	
+	@GetMapping("/getSaleByProductIdAndNoSale/{idProduct}/{noSale}")
+	public Sales getSaleByNoSale(@PathVariable Integer idProduct,@PathVariable Integer noSale){
+		log.info("getSaleByNoSale Controller");
+	 return salesRepoImpl.getSaleByProductIdAndNoSale(idProduct,noSale);
+	}
+	
 	@PostMapping("/createSale")
 	public Sales createSale(@RequestBody Sales sale){
 		log.info("createSale Controller");

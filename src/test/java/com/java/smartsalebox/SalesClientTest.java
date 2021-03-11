@@ -56,6 +56,11 @@ public class SalesClientTest {
 		System.out.println("NO SALE ID: "+admin.toString());
 	}
 	
+	public void getSalesByProductIdAndNoSale(Integer idProduct,Integer noSale) {
+		Sales sale = SalesClient.getSaleByProductIdAndNoSale(idProduct, noSale);
+		System.out.println("NO SALE ID: "+sale.toString());
+	}
+	
 	public void deleteSale(Integer id) {
 		Integer admin = SalesClient.deleteSale(id);
 		System.out.println("SALE REMOVED: "+admin);
@@ -65,8 +70,9 @@ public class SalesClientTest {
 		SalesClientTest salesClientTest = new SalesClientTest();
 		//salesClientTest.createDummySales();
 		//salesClientTest.updateDummySales();
-		salesClientTest.getAllSales();
-		//salesClientTest.getSalesByNoSale(1);
+		//salesClientTest.getAllSales();
+		//salesClientTest.getSalesByProductIdAndNoSale(1,1);
+		salesClientTest.getSalesByNoSale(1);
 		//salesClientTest.getSalesBySalesId(1);
 		//salesClientTest.deleteSale(2);
 		// EVERYTHING WORKING OK !!!

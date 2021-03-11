@@ -23,8 +23,12 @@ public class ProductEarningsRepoImpl {
 		return productEarningsRepository.findById(id);
 	}
 	
-	public Optional<ProductEarnings> getProductEarningsByProductId(Integer idProduct) {
-		return productEarningsRepository.findByProductId(idProduct);
+	public Optional<ProductEarnings> getGeneralProductEarningsByProductId(Integer idProduct) {
+		return productEarningsRepository.findByGeneralProductId(idProduct);
+	}
+	
+	public Optional<ProductEarnings> getBulkProductEarningsByProductId(Integer idProduct) {
+		return productEarningsRepository.findByBulkProductId(idProduct);
 	}
 	
 	public List<ProductEarnings> getProductEarningsByName(String name) {

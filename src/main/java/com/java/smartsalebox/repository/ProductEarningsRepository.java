@@ -17,8 +17,11 @@ public interface ProductEarningsRepository extends CrudRepository<ProductEarning
 	@Override
 	<S extends ProductEarnings> S save(S s);
 	
-	@Query("select prod from ProductEarnings prod where prod.idProduct = :idProduct")
-	public Optional<ProductEarnings> findByProductId(@Param("idProduct") Integer idProduct);
+	@Query("select prod from ProductEarnings prod where prod.idProduct = :idProduct and prod.productType='GENERAL'")
+	public Optional<ProductEarnings> findByGeneralProductId(@Param("idProduct") Integer idProduct);
+	
+	@Query("select prod from ProductEarnings prod where prod.idProduct = :idProduct and prod.productType='BULK'")
+	public Optional<ProductEarnings> findByBulkProductId(@Param("idProduct") Integer idProduct);
 	
 	@Query("select prod from ProductEarnings prod where prod.productName like %:productName%")
 	public List<ProductEarnings> findByName(@Param("productName") String productName);

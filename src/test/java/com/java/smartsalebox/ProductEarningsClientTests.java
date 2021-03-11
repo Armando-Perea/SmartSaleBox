@@ -47,7 +47,7 @@ public class ProductEarningsClientTests {
 	}
 	
 	public void getProductEarningsById(Integer id) {
-		ProductEarnings productEarnings = ProductEarningsClient.getProductEarningsById(id);
+		ProductEarnings productEarnings = ProductEarningsClient.getGeneralProductEarningsByProductId(id);
 		System.out.println("ProductEarningsClient ID: "+productEarnings.toString());
 	}
 	

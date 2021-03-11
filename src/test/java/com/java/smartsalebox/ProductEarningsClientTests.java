@@ -15,9 +15,7 @@ import com.java.smartsalebox.models.Products;
 
 public class ProductEarningsClientTests {
 
-	public void createDummyProduct() {  
-		long millis=System.currentTimeMillis();  
-	    java.sql.Date date=new java.sql.Date(millis);  
+	public void createDummyProduct() {   
 	    ProductEarnings productEarnings = new ProductEarnings();
 	    productEarnings.setIdProductEarning(4);
 	    productEarnings.setIdProduct(2);
@@ -25,14 +23,12 @@ public class ProductEarningsClientTests {
 	    productEarnings.setUnits(3);
 	    productEarnings.setUnitEarning(2.50);
 	    productEarnings.setTotalEarning(7.50);
-	    productEarnings.setSaleDate(date);
+	    productEarnings.setSaleDate("TODAY");
 	    productEarnings = ProductEarningsClient.addProductEarnings(productEarnings);
 		System.out.println("PRODUCT EARNING CREATED: "+productEarnings.toString());
 	}
 	
 	public void updateDummyProduct() {
-		long millis=System.currentTimeMillis();  
-	    java.sql.Date date=new java.sql.Date(millis);  
 		ProductEarnings productEarnings = new ProductEarnings();
 	    productEarnings.setIdProductEarning(3);
 	    productEarnings.setIdProduct(2);
@@ -40,7 +36,7 @@ public class ProductEarningsClientTests {
 	    productEarnings.setUnits(3);
 	    productEarnings.setUnitEarning(2.50);
 	    productEarnings.setTotalEarning(7.50);
-	    productEarnings.setSaleDate(date);
+	    productEarnings.setSaleDate("TODAY");
 		int response = ProductEarningsClient.updateProductEarnings(productEarnings);
 		System.out.println("UPDATE RESPONSE: "+response);
 	}
@@ -122,9 +118,7 @@ public class ProductEarningsClientTests {
 	    
 	}
 	
-	public static void addEarning(Products product,CartSale cartSale,Integer stock) {
-		long millis=System.currentTimeMillis();  
-	    java.sql.Date date=new java.sql.Date(millis);  
+	public static void addEarning(Products product,CartSale cartSale,Integer stock) { 
 		ProductEarnings productEarnings = new ProductEarnings();
 	    productEarnings.setIdProductEarning(0);
 	    productEarnings.setIdProduct(product.getIdProduct());
@@ -133,7 +127,7 @@ public class ProductEarningsClientTests {
 	    productEarnings.setUnitEarning(product.getEarning());
 	    productEarnings.setTotalEarning(getTotalEarning(cartSale.getUnits(),product.getEarning()));
 	    productEarnings.setProductStock(stock);
-	    productEarnings.setSaleDate(date);
+	    productEarnings.setSaleDate("TODAY");
 	    ProductEarningsClient.addProductEarnings(productEarnings);
 	}
 	

@@ -83,6 +83,12 @@ public class SalesController {
 		salesRepoImpl.deleteSale(id);
 	}
 	
+	@DeleteMapping("/deleteSaleByNoSale/{noSale}")
+	public void deleteSaleByNoSale(@PathVariable Integer noSale){
+		log.info("deleteSaleByNoSale Controller");
+		salesRepoImpl.deleteSaleByNoSale(noSale);
+	}
+	
 	@Transactional
 	@GetMapping("/truncateSales")
 	public String truncateSales(){

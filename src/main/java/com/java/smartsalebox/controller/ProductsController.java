@@ -46,6 +46,12 @@ public class ProductsController {
 	 return productsRepoImpl.getProductByName(name);
 	}
 	
+	@GetMapping("/getProductByBarCode/{barCode}")
+	public Products getProductByBarCode(@PathVariable String barCode){
+		log.info("getProductByBarCode Controller");
+	 return productsRepoImpl.getProductByBarCode(barCode);
+	}
+	
 	@PostMapping("/createProduct")
 	public Products createProduct(@RequestBody Products product){
 		log.info("createProduct Controller");

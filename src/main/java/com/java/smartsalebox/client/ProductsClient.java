@@ -56,6 +56,25 @@ public class ProductsClient {
 		}
 		return product;
 	}
+	
+	public static Products getProductByBarCode(String barCode) {
+		HttpHeaders headers = new HttpHeaders();
+		Products product = new Products();
+		try {
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			RestTemplate restTemplate = new RestTemplate();
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/products/getProductByBarCode/{barCode}";
+			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
+			ResponseEntity<Products> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					Products.class, barCode);
+			product = responseEntity.getBody();
+			logger.info("Before Returning getProductByBarCode");
+			return product;
+		} catch (Exception ex) {
+			logger.error("ERROR GET PRODUCT BY BAR CODE: " + ex);
+		}
+		return product;
+	}
 
 	public static Products[] getProductByName(String name) {
 		HttpHeaders headers = new HttpHeaders();

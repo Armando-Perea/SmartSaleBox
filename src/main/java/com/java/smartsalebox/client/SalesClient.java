@@ -195,6 +195,27 @@ public class SalesClient {
 		return status;
 	}
 	
+	public static Integer deleteSaleByNoSale(Integer noSale) {
+		HttpHeaders headers = new HttpHeaders();
+		int status = 200;
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		RestTemplate restTemplate = new RestTemplate();
+		String url = SmartSaleBoxApp.SYSTEM_URL + "/sales/deleteSaleByNoSale/{noSale}";
+		HttpEntity<Sales> requestEntity = new HttpEntity<Sales>(headers);
+		try {
+			ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.DELETE, requestEntity, String.class,
+					noSale);
+			HttpStatus statusResponse = ClientResponseHandler.getHttpResponse(response);
+			status = statusResponse.value();
+		} catch (HttpClientErrorException | HttpServerErrorException httpClientOrServerExc) {
+			logger.error("ERROR deleteSaleByNoSale: " + httpClientOrServerExc);
+			status = httpClientOrServerExc.getRawStatusCode();
+			return status;
+		}
+		logger.info("Before Returning deleteSaleByNoSale");
+		return status;
+	}
+	
 	public static String truncateSales() {
 		HttpHeaders headers = new HttpHeaders();
 		String resp = "Not Processed";

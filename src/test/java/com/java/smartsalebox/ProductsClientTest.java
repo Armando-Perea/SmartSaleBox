@@ -38,6 +38,11 @@ public class ProductsClientTest {
 		System.out.println("PRODUCT PAYMENT ID: "+admin.toString());
 	}
 	
+	public void getProductByBarCode(String barCode) {
+		Products product = ProductsClient.getProductByBarCode(barCode);
+		System.out.println("PRODUCT PAYMENT ID: "+product.toString());
+	}
+	
 	public void getAllProducts() {
 		List<Products> admin = Arrays.asList(ProductsClient.getAllProducts());
 		admin.forEach(System.out::println);
@@ -58,7 +63,8 @@ public class ProductsClientTest {
 		//productsClientTest.createDummyProduct();
 		//productsClientTest.updateDummyProduct();
 		//productsClientTest.getProductByProductId(2);
-		productsClientTest.getProductByProductName("Product");
+		//productsClientTest.getProductByProductName("Product");
+		productsClientTest.getProductByBarCode("123");
 		//productsClientTest.deleteProduct(2);
 		//productsClientTest.getAllProducts();
 		// EVERYTHING WORKING OK !!!

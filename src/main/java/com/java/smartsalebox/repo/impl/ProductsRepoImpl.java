@@ -28,6 +28,10 @@ public class ProductsRepoImpl {
 		return productsRepository.findByName(name);
 	}
 	
+	public Products getProductByBarCode(String barCode) {
+		return productsRepository.findByBarCode(barCode);
+	}
+	
 	public Products saveProduct(Products product) {
 		return productsRepository.save(product);
 	}

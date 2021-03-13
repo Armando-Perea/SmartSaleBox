@@ -48,6 +48,10 @@ public class SalesRepoImpl {
 		salesRepository.deleteById(id);
 	}
 	
+	public void deleteSaleByNoSale(Integer noSale) {
+		salesRepository.deleteSaleByNoSale(noSale);
+	}
+	
 	public void truncateSales() {
 		salesRepository.truncateSales();
 	}

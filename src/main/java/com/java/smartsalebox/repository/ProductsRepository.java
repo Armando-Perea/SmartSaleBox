@@ -19,6 +19,9 @@ public interface ProductsRepository extends CrudRepository<Products,Integer> {
 	@Query("select prod from Products prod where prod.product like %:product%")
 	public List<Products> findByName(@Param("product") String name);
 	
+	@Query("select prod from Products prod where prod.barCode=:barCode")
+	public Products findByBarCode(@Param("barCode") String barCode);
+	
 	@Modifying
 	@Query(value = "truncate smartsalebox.products", nativeQuery = true)
 	public void truncateProducts();

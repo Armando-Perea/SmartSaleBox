@@ -31,4 +31,7 @@ public class Cash {
 	@Column(name="noSale")
 	Integer noSale;	
 	
+	@Column(name="ticketTitle")
+	String ticketTitle;	
+	
 }

@@ -15,28 +15,28 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name="employee", schema="smartsalebox")
+@Table(name="administrator", schema="smartsalebox")
 @Entity
 @ToString
-public class Employee {
+public class Administrator {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="idEmployee")
-	Integer idEmployee;
+	@Column(name="idAdministrator")
+	Integer idAdministrator;
 	
-	@Column(name="employeeName")
-	String employeeName;
+	@Column(name="adminName")
+	String adminName;
 	
-	@Column(name="employeeLastName")
-	String employeeLastName;
+	@Column(name="adminLastName")
+	String adminLastName;
 	
-	@Column(name="employeePhone")
-	String employeePhone;
+	@Column(name="adminPhone")
+	String adminPhone;
 	
-	@Column(name="employeePassword")
-	String employeePassword;
+	@Column(name="adminPassword")
+	String adminPassword;
 	
-	@Column(name="employeeRole")
-	String employeeRole;
+	@Column(name="adminRole")
+	String adminRole;
 }

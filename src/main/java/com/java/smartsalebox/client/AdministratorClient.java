@@ -12,22 +12,22 @@ import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import com.java.smartsalebox.SmartSaleBoxApp;
-import com.java.smartsalebox.models.Employee;
+import com.java.smartsalebox.models.Administrator;
 
-public class EmployeeClient {
+public class AdministratorClient {
 
-	public static Logger logger = Logger.getLogger(EmployeeClient.class.getName());
+	public static Logger logger = Logger.getLogger(AdministratorClient.class.getName());
 
-	public static Employee[] getAllEmployees() {
+	public static Administrator[] getAllAdmins() {
 		HttpHeaders headers = new HttpHeaders();
-		Employee[] employees = {};
+		Administrator[] employees = {};
 		try {
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			RestTemplate restTemplate = new RestTemplate();
-			String url = SmartSaleBoxApp.SYSTEM_URL + "/employee/getAllEmployee";
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/admin/getAllAdmins";
 			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
-			ResponseEntity<Employee[]> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
-					Employee[].class);
+			ResponseEntity<Administrator[]> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					Administrator[].class);
 			employees = responseEntity.getBody();
 			logger.info("Before Returning getAllEmployee");
 			return employees;
@@ -37,16 +37,16 @@ public class EmployeeClient {
 		return employees;
 	}
 
-	public static Employee getEmployeeById(Integer id) {
+	public static Administrator getAdminById(Integer id) {
 		HttpHeaders headers = new HttpHeaders();
-		Employee employee = new Employee();
+		Administrator employee = new Administrator();
 		try {
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			RestTemplate restTemplate = new RestTemplate();
-			String url = SmartSaleBoxApp.SYSTEM_URL + "/employee/getEmployeeById/{id}";
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/admin/getAdminById/{id}";
 			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
-			ResponseEntity<Employee> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
-					Employee.class, id);
+			ResponseEntity<Administrator> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					Administrator.class, id);
 			employee = responseEntity.getBody();
 			logger.info("Before Returning getAdminById");
 			return employee;
@@ -55,51 +55,70 @@ public class EmployeeClient {
 		}
 		return employee;
 	}
-
-	public static Employee[] getEmployeeByName(String name) {
+	
+	public static Administrator[] getAdminByNameAndPassword(String name,String pass) {
 		HttpHeaders headers = new HttpHeaders();
-		Employee[] Administrators = {};
+		Administrator[] Administrators = {};
 		try {
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			RestTemplate restTemplate = new RestTemplate();
-			String url = SmartSaleBoxApp.SYSTEM_URL + "/employee/getEmployeeByName/{name}";
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/admin/getAdminByNameAndPassword/{name}/{pass}";
 			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
-			ResponseEntity<Employee[]> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
-					Employee[].class, name);
+			ResponseEntity<Administrator[]> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					Administrator[].class, name,pass);
 			Administrators = responseEntity.getBody();
-			logger.info("Before Returning getEmployeeByName");
+			logger.info("Before Returning getAdminByNameAndPassword");
 			return Administrators;
 		} catch (Exception ex) {
-			logger.error("ERROR GET EMPLOYEE NAME: " + ex);
+			logger.error("ERROR GET ADMIN NAME AND PASS: " + ex);
 		}
 		return Administrators;
 	}
 
-	public static Employee addEmployee(final Employee employee) {
+	public static Administrator[] getAdminByName(String name) {
 		HttpHeaders headers = new HttpHeaders();
-		Employee administratorResponse = new Employee();
+		Administrator[] Administrators = {};
 		try {
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			RestTemplate restTemplate = new RestTemplate();
-			String url = SmartSaleBoxApp.SYSTEM_URL + "/employee/createEmployee";
-			HttpEntity<Employee> requestEntity = new HttpEntity<Employee>(employee, headers);
-			ResponseEntity<Employee> result = restTemplate.postForEntity(url, requestEntity, Employee.class);
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/admin/getAdminByName/{name}";
+			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
+			ResponseEntity<Administrator[]> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
+					Administrator[].class, name);
+			Administrators = responseEntity.getBody();
+			logger.info("Before Returning getAdminByName");
+			return Administrators;
+		} catch (Exception ex) {
+			logger.error("ERROR GET ADMIN NAME: " + ex);
+		}
+		return Administrators;
+	}
+
+	public static Administrator addAdmin(final Administrator admin) {
+		HttpHeaders headers = new HttpHeaders();
+		Administrator administratorResponse = new Administrator();
+		try {
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			RestTemplate restTemplate = new RestTemplate();
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/admin/createAdmin";
+			HttpEntity<Administrator> requestEntity = new HttpEntity<Administrator>(admin, headers);
+			ResponseEntity<Administrator> result = restTemplate.postForEntity(url, requestEntity, Administrator.class);
 			administratorResponse = result.getBody();
-			logger.info("Before Returning addEmployee");
-			return employee;
+			logger.info("Before Returning addAdmin");
+			return admin;
 		} catch (Exception ex) {
 			logger.error("ADMINISTRATOR: " + administratorResponse.toString());
 		}
 		return administratorResponse;
 	}
 
-	public static Integer updateEmployee(final Employee employee) {
+	public static Integer updateAdmin(final Administrator admin) {
 		HttpHeaders headers = new HttpHeaders();
 		int status = 200;
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		RestTemplate restTemplate = new RestTemplate();
-		String url = SmartSaleBoxApp.SYSTEM_URL + "/employee/updateEmployee";
-		HttpEntity<Employee> requestEntity = new HttpEntity<Employee>(employee, headers);
+		String url = SmartSaleBoxApp.SYSTEM_URL + "/admin/updateAdmin";
+		HttpEntity<Administrator> requestEntity = new HttpEntity<Administrator>(admin, headers);
 		try {
 			ResponseEntity<String> result = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, String.class);
 			HttpStatus statusResponse = ClientResponseHandler.getHttpResponse(result);
@@ -109,49 +128,49 @@ public class EmployeeClient {
 					|| HttpStatus.INTERNAL_SERVER_ERROR.equals(httpClientOrServerExc.getStatusCode())) {
 				status = httpClientOrServerExc.getRawStatusCode();
 			}
-			logger.error("Catch Returning updateEmployee " + employee.toString());
+			logger.error("Catch Returning updateAdmin " + admin.toString());
 			return status;
 		}
-		logger.info("Before Returning updateEmployee");
+		logger.info("Before Returning updateAdmin");
 		return status;
 	}
 
-	public static Integer deleteEmployee(Integer id) {
+	public static Integer deleteAdmin(Integer id) {
 		HttpHeaders headers = new HttpHeaders();
 		int status = 200;
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		RestTemplate restTemplate = new RestTemplate();
-		String url = SmartSaleBoxApp.SYSTEM_URL + "/employee/deleteEmployee/{id}";
-		HttpEntity<Employee> requestEntity = new HttpEntity<Employee>(headers);
+		String url = SmartSaleBoxApp.SYSTEM_URL + "/admin/deleteAdmin/{id}";
+		HttpEntity<Administrator> requestEntity = new HttpEntity<Administrator>(headers);
 		try {
 			ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.DELETE, requestEntity, String.class,
 					id);
 			HttpStatus statusResponse = ClientResponseHandler.getHttpResponse(response);
 			status = statusResponse.value();
 		} catch (HttpClientErrorException | HttpServerErrorException httpClientOrServerExc) {
-			logger.error("ERROR deleteEmployee: " + httpClientOrServerExc);
+			logger.error("ERROR deleteAdmin: " + httpClientOrServerExc);
 			status = httpClientOrServerExc.getRawStatusCode();
 			return status;
 		}
-		logger.info("Before Returning deleteEmployee");
+		logger.info("Before Returning deleteAdmin");
 		return status;
 	}
 	
-	public static String truncateEmployee() {
+	public static String truncateAdmin() {
 		HttpHeaders headers = new HttpHeaders();
 		String resp = "Not Processed";
 		try {
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			RestTemplate restTemplate = new RestTemplate();
-			String url = SmartSaleBoxApp.SYSTEM_URL + "/employee/truncateEmployee";
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/admin/truncateAdmin";
 			HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
 			ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity,
 					String.class);
 			resp = responseEntity.getBody();
-			logger.info("Before Returning truncateEmployee");
+			logger.info("Before Returning truncateAdmin");
 			return resp;
 		} catch (Exception ex) {
-			logger.error("ERROR TRUNCATE EMPLOYEE " + ex);
+			logger.error("ERROR TRUNCATE ADMIN " + ex);
 		}
 		return resp;
 	}

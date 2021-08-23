@@ -45,7 +45,7 @@
 		<property name="com.jaspersoft.studio.field.label" value="product_stock"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="products_earnings"/>
 	</field>
-	<field name="sale_date" class="java.sql.Date">
+	<field name="sale_date" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="sale_date"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="products_earnings"/>
 	</field>

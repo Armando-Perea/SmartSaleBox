@@ -37,22 +37,15 @@
 		<property name="com.jaspersoft.studio.field.label" value="units"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="sales"/>
 	</field>
-	<field name="card_fare" class="java.lang.Double">
-		<property name="com.jaspersoft.studio.field.label" value="card_fare"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="sales"/>
-	</field>
-	<field name="payment_type" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="payment_type"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="sales"/>
-	</field>
 	<field name="total" class="java.lang.Double">
 		<property name="com.jaspersoft.studio.field.label" value="total"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="sales"/>
 	</field>
-	<field name="sale_date" class="java.sql.Date">
+	<field name="sale_date" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="sale_date"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="sales"/>
 	</field>
+	<field name="stock" class="java.lang.String"/>
 	<variable name="totalSales" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{total}]]></variableExpression>
 		<initialValueExpression><![CDATA[$F{total}]]></initialValueExpression>
@@ -164,25 +157,16 @@
 				<text><![CDATA[Unidades]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="340" y="0" width="90" height="18" forecolor="#000000" uuid="dbb007b2-4597-49f1-91e6-395eb943f01a">
-					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="985a9617-528d-4888-83f4-1340a4aa566e"/>
-				</reportElement>
-				<textElement>
-					<font isBold="false"/>
-				</textElement>
-				<text><![CDATA[CargoTarjeta]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="430" y="0" width="100" height="18" forecolor="#000000" uuid="c7b38602-e5ab-41dc-9eec-182d15535fd5">
+				<reportElement style="Column header" x="340" y="0" width="100" height="18" forecolor="#000000" uuid="c7b38602-e5ab-41dc-9eec-182d15535fd5">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ceea4d66-cac0-46a7-9244-2a8026b10c88"/>
 				</reportElement>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
-				<text><![CDATA[TipoPago]]></text>
+				<text><![CDATA[Stock	]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="530" y="0" width="110" height="18" forecolor="#000000" uuid="ace216f8-8cfd-41fa-833d-6f6214d9f437">
+				<reportElement style="Column header" x="440" y="0" width="110" height="18" forecolor="#000000" uuid="ace216f8-8cfd-41fa-833d-6f6214d9f437">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="15bbef28-d65f-4185-83b3-eac9c5c8acbd"/>
 				</reportElement>
 				<textElement>
@@ -191,7 +175,7 @@
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="640" y="0" width="152" height="18" forecolor="#000000" uuid="5aaf903c-9835-4b02-9a30-e6237e67a49d">
+				<reportElement style="Column header" x="549" y="0" width="152" height="18" forecolor="#000000" uuid="5aaf903c-9835-4b02-9a30-e6237e67a49d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="00c1251e-a098-48e7-9397-0df1ccb17335"/>
 				</reportElement>
 				<textElement>
@@ -242,25 +226,16 @@
 					<textFieldExpression><![CDATA[$F{units}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="340" y="0" width="90" height="18" uuid="19138c89-df5a-4e5f-a303-277b42a8dedc">
-						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="985a9617-528d-4888-83f4-1340a4aa566e"/>
-					</reportElement>
-					<textElement>
-						<font size="14"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{card_fare}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="430" y="0" width="100" height="18" uuid="4c603076-b480-4e19-91cd-5df8a868b4ea">
+					<reportElement style="Detail" positionType="Float" x="340" y="0" width="100" height="18" uuid="4c603076-b480-4e19-91cd-5df8a868b4ea">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ceea4d66-cac0-46a7-9244-2a8026b10c88"/>
 					</reportElement>
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{payment_type}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{stock}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="530" y="0" width="110" height="18" uuid="f3443c33-9072-4d61-8079-40b1e3b779d4">
+					<reportElement style="Detail" positionType="Float" x="440" y="0" width="110" height="18" uuid="f3443c33-9072-4d61-8079-40b1e3b779d4">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="15bbef28-d65f-4185-83b3-eac9c5c8acbd"/>
 					</reportElement>
 					<textElement>
@@ -269,7 +244,7 @@
 					<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="640" y="0" width="152" height="18" uuid="02c01102-6245-40d7-a9fe-22ae1dc2f650">
+					<reportElement style="Detail" positionType="Float" x="550" y="0" width="152" height="18" uuid="02c01102-6245-40d7-a9fe-22ae1dc2f650">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="00c1251e-a098-48e7-9397-0df1ccb17335"/>
 					</reportElement>
 					<textElement>

@@ -41,7 +41,7 @@
 		<property name="com.jaspersoft.studio.field.label" value="quantity"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="inflow"/>
 	</field>
-	<field name="inflow_date" class="java.sql.Date">
+	<field name="inflow_date" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="inflow_date"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="inflow"/>
 	</field>

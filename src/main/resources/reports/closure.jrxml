@@ -57,7 +57,7 @@
 		<property name="com.jaspersoft.studio.field.label" value="earning"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="closure"/>
 	</field>
-	<field name="closure_date" class="java.sql.Date">
+	<field name="closure_date" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="closure_date"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="closure"/>
 	</field>

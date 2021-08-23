@@ -18,7 +18,7 @@ public class ClosureClientTest {
 	     closure.setCardPayments(100.0);
 	     closure.setCashPayments(100.0);
 	     closure.setClosureCash(100.0);
-	     closure.setClosureDate(date);
+	     closure.setClosureDate(date.toString());
 	     closure.setEarning(100.0);
 	     closure.setInitCash(100.0);
 	     closure.setProducts(100.0);
@@ -37,7 +37,7 @@ public class ClosureClientTest {
 	     closure.setCardPayments(200.0);
 	     closure.setCashPayments(200.0);
 	     closure.setClosureCash(200.0);
-	     closure.setClosureDate(date);
+	     closure.setClosureDate(date.toString());
 	     closure.setEarning(200.0);
 	     closure.setInitCash(200.0);
 	     closure.setProducts(200.0);

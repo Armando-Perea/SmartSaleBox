@@ -174,13 +174,13 @@ public class ReportGenerator {
 
 	}
 
-//	public static void main(String[] args) throws SQLException {
-//		ReportGenerator.closureReport();
-//		ReportGenerator.outgoingsReport();
-//		ReportGenerator.incomesReport();
-//		ReportGenerator.salesReport();
-//		ReportGenerator.productEarningsReport();
-//		ReportGenerator.productReport();
-//	}
+	public static void main(String[] args) throws SQLException {
+		ReportGenerator.closureReport();
+		ReportGenerator.outgoingsReport();
+		ReportGenerator.incomesReport();
+		ReportGenerator.salesReport();
+		ReportGenerator.productEarningsReport();
+		ReportGenerator.productReport();
+	}
 
 }

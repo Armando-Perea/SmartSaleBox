@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.collections.bag.SynchronizedSortedBag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -39,5 +40,7 @@ public class SmartSaleBoxApp {
 			SmartSaleBoxConstants.PRODUCT_PATH = systemPathsList.get(0).getProductsPdf();
 			SmartSaleBoxConstants.PRODUCT_EARNINGS_PATH = systemPathsList.get(0).getProductEarningsPdf();
 		}
+		System.out.println("PATH VALUES:");
+		systemPathsList.forEach(System.out::println);
 	}
 }

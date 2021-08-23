@@ -13,7 +13,7 @@ import lombok.extern.log4j.Log4j;
 public class ReportController {
 	
 	@PostMapping("/createClosureReports")
-	public String createCash(){
+	public String createClosureReports(){
 		log.info("creating reports Controller");
 		try {
 			ReportGenerator.closureReport();
@@ -26,7 +26,7 @@ public class ReportController {
 			log.error("creating reports Controller Failed");
 			return "ERROR "+e.getMessage();
 		}
-	 return "Report Success";
+	 return "OK";
 	}
 
 }

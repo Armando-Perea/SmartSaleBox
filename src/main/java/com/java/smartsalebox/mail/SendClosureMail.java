@@ -32,13 +32,10 @@ public class SendClosureMail {
 	
 	public static Logger logger = Logger.getLogger(SendClosureMail.class.getName());
 
-	public static boolean SendMail(Closure closureData) throws Exception {
-
+	public static Boolean sendMail(Closure closureData) throws Exception {
 		String bodyClosureMail;
-		boolean sentOk = true;
 		bodyClosureMail = MailAuthData.bodyMailClosureBuilder(closureData);
 		EmailConfig emailConfig = EmailConfigClient.getEmailConfigById(1);
-		System.out.println("EMAIL CONFIG: "+emailConfig.toString());
 		Properties props = new Properties();
 		props.put(MailAuthData.SMPT_AUTH, MailAuthData.SMTP_ENABLE);
 		props.put(MailAuthData.SMPT_STARTTLS, MailAuthData.SMTP_ENABLE);
@@ -47,7 +44,7 @@ public class SendClosureMail {
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
 				try {
-					return new PasswordAuthentication(EncryptSecurity.decrypt(emailConfig.getEmail()),
+					return new PasswordAuthentication(emailConfig.getEmail(),
 							EncryptSecurity.decrypt(emailConfig.getPassword()));
 				} catch (Exception e) {
 					logger.error("Exception: "+e.getMessage());
@@ -71,12 +68,11 @@ public class SendClosureMail {
 
 			multipart.addBodyPart(messageBodyPart);
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(EncryptSecurity.decrypt(emailConfig.getEmail())));
+			message.setFrom(new InternetAddress(emailConfig.getEmail()));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse(EncryptSecurity.decrypt(emailConfig.getEmail())));
+					InternetAddress.parse(emailConfig.getEmail()));
 			message.setSubject(MailAuthData.CLOSURE_NOTIF + closureData.getAttendee());
 			message.setText(bodyClosureMail);
-			System.out.println("INFLOW PATH: "+SmartSaleBoxConstants.INFLOW_PATH);
 			DataSource sourceIncomes = new FileDataSource(SmartSaleBoxConstants.INFLOW_PATH);
 			DataSource sourceOutgoings = new FileDataSource(SmartSaleBoxConstants.OUTFLOW_PATH);
 			DataSource sourceClosure = new FileDataSource(SmartSaleBoxConstants.CLOSURE_PATH);
@@ -107,15 +103,13 @@ public class SendClosureMail {
 
 			message.setContent(multipart);
 			Transport.send(message);
-			System.out.println("Emails Successfully Sent!");
-			logger.info("Emails Successfully Sent!");
+			logger.info("Email Successfully Sent!");
 		} catch (MessagingException e) {
 			System.out.println("Exception Sending Mail: "+e.getMessage());
 			logger.error("Exception Sending Mail: "+e.getMessage());
-			sentOk = false;
-			return sentOk;
+			return false;
 		}
-		return sentOk;
+		return true;
 	}
 
 //	public static void main(String[] args) throws Exception {
@@ -142,7 +136,7 @@ public class SendClosureMail {
 //		closure.setCardPayments(894.00);
 //		closure.setEarning(2569.00);
 //
-//		SendClosureMail.SendMail(closure);
+//		SendClosureMail.sendMail(closure);
 //	}
 
 }

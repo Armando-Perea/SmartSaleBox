@@ -26,10 +26,9 @@ public class MailAuthData {
     public static final String CLOSURE_REPORT="ReporteCorte.pdf";
     public static final String PRODUCT_REPORT="ReporteProducto.pdf";
     public static final String PRODUCT_EARNINGS_REPORT="ReporteGananciaProducto.pdf";
-    public static final String FAIL_REPORT="Favor de enviar Reportes a : abarrotesadm@gmail.com ";
+    public static final String FAIL_REPORT="Favor de enviar Reportes al correo del encargado";
     public static final String FAIL_AUTH="Problemas al descifrar usuario y constraseña";
     public static final String CLOSURE_NOTIF="SmartSaleBox Corte Hecho Por ";
-  	// "C:\\NewYorkCoffeeReports\\ReporteVentas.pdf";
 
     public static String bodyMailClosureBuilder(Closure closureData) {
     	String initCash,closureCash,totalCard,totalCash,totalIn,totalOut,totalGenerated,employee,products;
@@ -60,7 +59,6 @@ public class MailAuthData {
 	    "\nTOTAL SALIDAS: "+totalOut+
 	    "\nTOTAL EFECTIVO: "+totalCash+
 	    "\nTOTAL TARJETA: "+totalCard+
-	    "\nTOTAL GENERADO: "+totalGenerated+
 	    "\nTOTAL GANANCIA PRODUCTOS: "+totalGenerated+      
 	    "\n"+
 	    "\n=============================\n"+

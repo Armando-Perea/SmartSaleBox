@@ -12,9 +12,9 @@ public class ReportClient {
 	
 	public static Logger logger = Logger.getLogger(ReportClient.class.getName());
 	
-	public static String generateClosureReports() {
+	public static Boolean generateClosureReports() {
 		HttpHeaders headers = new HttpHeaders();
-		String reportGeneratorResponse = new String();
+		String reportGeneratorResponse = "FAIL";
 		try {
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			RestTemplate restTemplate = new RestTemplate();
@@ -23,11 +23,11 @@ public class ReportClient {
 			ResponseEntity<String> result = restTemplate.postForEntity(url, requestEntity, String.class);
 			reportGeneratorResponse = result.getBody();
 			logger.info("Before Returning Reports");
-			return reportGeneratorResponse;
+			return "OK".equals(reportGeneratorResponse);
 		} catch (Exception ex) {
 			logger.error("Generating Reports Error: " + reportGeneratorResponse.toString());
 		}
-		return reportGeneratorResponse;
+		return "OK".equals(reportGeneratorResponse);
 	}
 
 }

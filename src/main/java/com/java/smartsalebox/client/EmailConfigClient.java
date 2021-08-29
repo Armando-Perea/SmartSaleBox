@@ -12,6 +12,7 @@ import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import com.java.smartsalebox.SmartSaleBoxApp;
+import com.java.smartsalebox.models.Closure;
 import com.java.smartsalebox.models.EmailConfig;
 
 public class EmailConfigClient {
@@ -135,6 +136,24 @@ public class EmailConfigClient {
 			logger.error("ERROR TRUNCATE EMAILCONFIG " + ex);
 		}
 		return resp;
+	}
+	
+	public static Boolean sendEmailReports(final Closure closure) {
+		HttpHeaders headers = new HttpHeaders();
+		Boolean reportGenerationResponse = new Boolean(false);
+		try {
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			RestTemplate restTemplate = new RestTemplate();
+			String url = SmartSaleBoxApp.SYSTEM_URL + "/emailConfig/sendEmailReports";
+			HttpEntity<Closure> requestEntity = new HttpEntity<Closure>(closure, headers);
+			ResponseEntity<Boolean> result = restTemplate.postForEntity(url, requestEntity, Boolean.class);
+			reportGenerationResponse = result.getBody();
+			logger.info("Before Returning sendEmailReports: "+ reportGenerationResponse);
+			return reportGenerationResponse;
+		} catch (Exception ex) {
+			logger.error("sendReports: " + reportGenerationResponse.toString());
+		}
+		return false;
 	}
 
 }

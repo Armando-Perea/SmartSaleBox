@@ -54,12 +54,8 @@ public class EncryptSecurity {
 	    }
 	    
 //	    public static void main(String[] args) throws Exception {
-//			String mail = "makeuplifeadm@gmail.com";
-//			String password="tqeqnejzigcetgyg";
-//			//J3FPukD52orOWTfXdvMDlUUkkdXz2cs3QW7EK7rmy7M=
-//			//7WFF0dFj970VNFycLLPKQw==
-//			//magc1782
-//			
+//			String mail = "xxx";
+//			String password="xxx";
 //			String encr1;
 //			String encr2;
 //			System.out.println("ENCRYPT");

@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.java.smartsalebox.mail.SendClosureMail;
+import com.java.smartsalebox.models.Closure;
 import com.java.smartsalebox.models.EmailConfig;
 import com.java.smartsalebox.repo.impl.EmailConfigRepoImpl;
 
@@ -64,6 +66,12 @@ public class EmailConfigController {
 		log.info("truncateEmailConfig Controller");
 		emailConfigRepoImpl.truncateEmailConfig();
 		return "Truncated";
+	}
+	
+	@PostMapping("/sendEmailReports")
+	public Boolean sendEmailReports(@RequestBody Closure closure) throws Exception {
+		log.info("sendEmailReports Controller");
+	 return SendClosureMail.sendMail(closure);
 	}
 	
 }
